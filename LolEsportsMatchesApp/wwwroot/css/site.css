@@ -1,0 +1,732 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+/*start of color palette*/
+
+/* dark theme */
+body {
+    background-color: #222629;
+    color: white;
+    font-family: 'Josefin Sans', Times, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif', Helvetica, serif;
+}
+
+table, th, td {
+    border: 1px solid #6b6e70;
+}
+
+h1, h2 {
+    color: #86c232;
+}
+
+h1 {
+    padding-bottom: 2rem;
+}
+
+h3, h4, h5, h6 {
+    color: #61892f;
+}
+
+a h4 {
+    color: white;
+}
+
+a:hover h4 {
+    color: #86c232;
+}
+
+a:hover .team-info p {
+    color: #86c232;
+}
+
+a:hover .date {
+    color: #86c232;
+}
+
+.blue-team-result .score-box {
+    color: #859bff;
+}
+
+.red-team-result .score-box {
+    color: #FA2742;
+}
+
+.blue-champs .box {
+    background-color: teal;
+}
+
+.red-champs .box {
+    background-color: pink;
+}
+
+.team-info .box {
+    background-color: #222629;
+}
+
+.btn {
+    color: white;
+}
+
+.btn:hover {
+    color: #86c232;
+}
+
+.league-block {
+    border: 1px solid #6b6e70;
+}
+
+.team-block {
+    border: 1px solid #6b6e70;
+}
+    
+
+/* gray theme 
+body {
+    background-color: #d0d4cbff;
+    color: #373833;
+    font-family: 'Josefin Sans', Times, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif', Helvetica, serif;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+h1, h2 {
+    color: #FA2742;
+}
+
+h3, h4, h5, h6 {
+    color: #FA2742;
+}
+
+a h4 {
+    color: #373833;
+}
+
+a:hover .team-info p {
+    color: #FA2742;
+}
+
+.blue-team-result .score-box {
+    color: #859bff;
+}
+
+.red-team-result .score-box {
+    color: #FA2742;
+}
+
+.blue-champs .box {
+    background-color: teal;
+}
+
+.red-champs .box {
+    background-color: pink;
+}
+
+.team-info .box {
+    background-color: #d0d4cbff;
+}
+
+.btn {
+    color: #373833;
+}
+
+.btn:hover {
+    color: #FA2742;
+}
+
+.league-block {
+    border: 1px solid white;
+}
+
+.team-block {
+    border: 1px solid white;
+}
+*/
+
+/*end of color palette*/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+a:hover {
+    color: unset;
+}
+
+table, th, td {
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.filter-container p {
+    margin-bottom: 0.1rem;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.leagues-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: center;
+}
+
+.leagues-container h4 {
+    text-align: center;
+}
+
+.league-block {
+    width: 264px;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 30%;
+    align-self: auto;
+    order: 0;
+    margin-bottom: 50px;
+}
+
+.league-logo {
+    width: 256px;
+    height: 128px;
+}
+
+.teams-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: center;
+}
+
+.team-block {
+    width: 136px;
+    min-height: 236px;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 30%;
+    align-self: auto;
+    order: 0;
+    margin-bottom: 50px;
+}
+
+.teams-container h4{
+    text-align: center;
+}
+
+.team-block .team-logo {
+    width: 128px;
+    height: 128px;
+}
+
+.score-box {
+    width: 32px;
+    height: 64px;
+    max-height: 64px;
+    display: table;
+}
+
+.score-box p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+.box {
+    width: 64px;
+    height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    text-align: center;
+}
+
+.date {
+    width: 64px;
+    text-align: center;
+}
+
+.game-result-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.team-and-games-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-short-result-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.team-info-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.team-info-container .team-info {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.team-detailed-container {
+    margin-right: 50px;
+}
+
+.team-detailed-container .team-info-container .team-logo-box {
+    width: 128px;
+    height: 128px;
+    margin-right: 5px;
+}
+
+.player-container .img-box {
+    width: 100px;
+    height: 80px;
+    margin-right: 5px;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 36px;
+}
+
+.player-container .player-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-info p {
+    margin-bottom: 0.1rem;
+}
+
+.team-info-box {
+    display: table;
+}
+
+
+.blue-team-result {
+    display: flex;
+    flex-direction: row;
+}
+
+.red-team-result {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.team-info {
+    display: flex;
+    max-height: 64px;
+}
+
+.team-code {
+    width: 64px;
+    text-align: center;
+    display: table;
+}
+
+.team-code p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.red-team-result .team-info {
+    flex-direction: row-reverse;
+}
+
+.blue-champs {
+    display: flex;
+}
+
+.red-champs {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Game rules */
+.game-details .team-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-details .red-header {
+    flex-direction: row-reverse;
+}
+
+.game-detailed-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-about {
+    padding-right: 100px;
+}
+
+.champ-info-container {
+    --champ-box-size: 48px;
+    --champ-big-box-size: 96px;
+}
+
+.blue-team .champ-info-container {
+    padding: 5px;
+    padding-right: 15px;
+}
+
+.red-team .champ-info-container {
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.champ-info-container .first-line .score {
+    min-width: 65px;
+}
+
+.champ-info-container .first-line,
+.champ-info-container .second-line,
+.champ-info-container .first-line .boxes,
+.champ-info-container .runes-boxes,
+.champ-info-container .score{
+    display: flex;
+}
+
+.blue-team .champ-info-container .first-line,
+.blue-team .champ-info-container .first-line .boxes,
+.blue-team .champ-info-container .second-line,
+.blue-team .champ-info-container .runes-boxes {
+    flex-direction: row;
+}
+
+.champ-info-container .score {
+    flex-direction: column;
+}
+
+.red-team .champ-info-container .first-line,
+.red-team .champ-info-container .first-line .boxes,
+.red-team .champ-info-container .second-line,
+.red-team .champ-info-container .runes-boxes {
+    flex-direction: row-reverse;
+}
+
+.champ-info-container .score,
+.champ-info-container .centered-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.champ-info-container .second-line {
+    justify-content: space-between;
+}
+
+.champ-info-container .champ-box {
+    max-width: 96px;
+    max-height: 96px;
+    width: var(--champ-big-box-size);
+    height: var(--champ-big-box-size);
+}
+
+.champ-box {
+    position: relative;
+}
+
+.champ-box img {
+    width: 100%;
+    height: 100%;
+}
+
+    .champ-box .champ-level {
+        position: absolute;
+    }
+
+.blue-team .champ-box .champ-level {
+    bottom: 1px;
+    right: 8px;
+}
+
+.red-team .champ-box .champ-level {
+    bottom: 1px;
+    left: 8px;
+}
+
+.items-boxes-container {
+    max-width: 160px;
+    width: calc((var(--champ-box-size) * 3) + 20px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
+
+.items-boxes-container .item-box {
+    max-width: 48px;
+    max-height: 48px;
+    width: var(--champ-box-size);
+    height: var(--champ-box-size);
+    flex-basis: 30%;
+}
+
+.main-rune-box {
+    width: 36px;
+    height: 36px;
+}
+
+.sub-rune-box {
+    width: 24px;
+    height: 24px;
+    align-self: flex-end;
+}
+
+
+/* End of game rules */
+
+
+@media only screen and (max-width: 1130px) {
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        margin-left: 2px;
+        margin-right: 2px;
+        --box-size: calc((100vw - 128px) / 13);
+    }
+
+    .champ-info-container .first-line .score {
+        min-width: 56px;
+    }
+
+    .game-detailed-container {
+        flex-direction: column;
+    }
+
+    .game-detailed-container .game-about {
+        display: flex;
+        justify-content: center;
+    }
+
+        .game-detailed-container .game-details {
+            display: flex;
+            justify-content: center;
+        }
+
+    .champ-info-container {
+        --champ-box-size: calc((100vw - 230px) / 10);
+        --champ-big-box-size: calc((100vw - 230px) / 5);
+    }
+
+    .game-result-container {
+        flex-direction: row;
+    }
+
+    .team-detailed-container {
+        margin-right: 10px;
+    }
+
+    .team-games-container {
+        --box-size: calc((100vw - 340px) / 6);
+    }
+
+    .team-games-container .date {
+        width: 50px;
+        font-size: 0.8em;
+    }
+
+    .team-code {
+        display: none;
+    }
+
+    .red-champs {
+        flex-direction: row-reverse;
+    }
+
+    .box {
+        width: var(--box-size);
+        height: var(--box-size);
+    }
+
+    .score-box {
+        height: var(--box-size);
+    }
+
+    .team-info {
+        height: var(--box-size);
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 601px) {
+    .team-info-container .team-info p {
+        font-size: 0.7rem;
+    }
+
+    .team-info-container .team-info h2 {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .team-detailed-container .team-info-container .team-logo-box {
+        width: 100px;
+        height: 100px;
+    }
+
+    .player-container .img-box {
+        width: 86px;
+        height: 70px;
+    }
+
+    .player-container .player-info {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        margin-left: 2px;
+        margin-right: 2px;
+        --box-size: calc((100vw - 70px) / 7);
+    }
+
+    /*Game*/
+
+    .blue-team .champ-info-container {
+        padding-right: 5px;
+    }
+
+    .red-team .champ-info-container {
+        padding-left: 5px;
+    }
+
+    .champ-info-container {
+        --champ-box-size: calc((100vw - 125px) / 10);
+        --champ-big-box-size: calc((100vw - 125px) / 5);
+    }
+
+    .blue-team .champ-info-container .first-line,
+    .red-team .champ-info-container .first-line {
+        flex-direction: column;
+    }
+
+    .blue-team .champ-info-container .first-line .score {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .red-team .champ-info-container .first-line .score {
+        flex-direction: row-reverse;
+        justify-content: space-around;
+    }
+
+    .champ-info-container .second-line .centered-text {
+        font-size: 0.8rem;
+    }
+
+    /*End of Game*/
+
+    .team-games-container {
+        --box-size: unset;
+    }
+
+    .date {
+        width: 50px;
+        font-size: 0.8em;
+    }
+
+    .player-info p {
+        font-size: 0.8em;
+    }
+
+    .game-result-container {
+        flex-direction: column-reverse;
+    }
+
+    .team-and-games-container {
+        flex-direction: column;
+    }
+
+    .team-detailed-container {
+        margin-right: 0px;
+    }
+
+    .team-detailed-container .team-info-container {
+        justify-content: center;
+    }
+
+    .team-players-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: stretch;
+        align-content: center;
+    }
+
+    .team-players-container .player-container {
+        width: 200px;
+    }
+
+    .red-team-result {
+        flex-direction: row;
+    }
+
+    .red-champs {
+        flex-direction: row;
+    }
+
+    .team-code {
+        display: none;
+    }
+
+    .filter-container {
+        flex-direction: column;
+    }
+}

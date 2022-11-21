@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LolEsportsMatches.Services.ErrorStorage.ErrorInfo>
+@{
+    ViewData["Title"] = "Local data";
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+<h1>Manage Local data and Errors</h1>
+
+@using (Html.BeginForm("UpdateData", "AdminLocalData", FormMethod.Post))
+{
+    <input type="submit" value="Update local LOL data" class="btn btn-primary"/>
+}
+
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Inner Id</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => e.Category)</td>
+                    <td>@Html.DisplayFor(m => e.InnerId)</td>
+                    <td>@Html.DisplayFor(m => e.Message)</td>
+                    <td>
+                        <div class="admin-delete-button-container">
+                            @using (Html.BeginForm("Solve", "AdminLocalData", FormMethod.Post))
+                            {
+                                @Html.Hidden("id", e.Id)
+                                <input type="submit" class="btn btn-danger" value="Mark as solved"/>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No errors yet</p>
+}
+

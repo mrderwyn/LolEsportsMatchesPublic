@@ -1,0 +1,52 @@
+﻿@model LolEsportsMatchesApp.Models.LeagueModel;
+@{
+    ViewData["Title"] = "Edit League";
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+<h2>Update League</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+@using (Html.BeginForm("Update", "AdminLeagues", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <p>Input League Id</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Id, new {@Value = Model.Id, @Disabled = true})
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input League Slug</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Slug, new {@Value = Model.Slug})
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input League Name</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Name, new {@Value = Model.Name})
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input League Image</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Image, new {@Value = Model.Image})
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Edit" class="btn btn-default"/>
+}

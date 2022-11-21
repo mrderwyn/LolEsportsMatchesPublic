@@ -1,0 +1,32 @@
+﻿@model LolEsportsMatchesApp.ViewModels.RegistrationViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Register", "Account"))
+        {
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new {placeholder = "Input email"})
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Password, new {placeholder = "Input password"})
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.ConfirmPassword, new {placeholder = "Repeat password"})
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Role, new {placeholder = "Input role (admin or user)"})
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        }
+    </div>
+</div>

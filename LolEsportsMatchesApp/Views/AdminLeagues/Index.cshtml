@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LolEsportsMatchesApp.Models.LeagueModel>
+@{
+    ViewData["Title"] = "Leagues list";
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+        <h1>Manage Leagues</h1>
+
+        <a href="@Url.ActionLink("New")" class="btn btn-default">Create</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Slug</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var league in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(item => league.Id)</td>
+                        <td>@Html.DisplayFor(item => league.Slug)</td>
+                        <td>@Html.DisplayFor(item => league.Name)</td>
+                        <td>@Html.DisplayFor(item => league.Image)</td>
+                        <td style="display: flex">
+                            <div class="admin-edit-button-container">
+                                <a href="@Url.ActionLink("Update", "AdminLeagues", new {id = league.Id})"
+                                   class="btn btn-default">Edit</a>
+                            </div>
+                            <div class="admin-delete-button-container">
+                                @using (Html.BeginForm("Delete", "AdminLeagues",  new {id = league.Id}, FormMethod.Post))
+                                {
+                                    <input type="submit" class="btn btn-danger"
+                                           onclick="return confirm('Are you sure you wand to delete @league.Name league?')" value="Delete"/>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+

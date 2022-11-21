@@ -1,0 +1,20 @@
+﻿@model IEnumerable<LolEsportsMatchesApp.Models.LeagueModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Lol Esports Matches</h1>
+    
+    <div class="leagues-container">
+        @foreach (LolEsportsMatchesApp.Models.LeagueModel l in Model)
+        {
+            <a href="@Url.ActionLink("Index", "Leagues", new {id=@l.Slug})">
+                <div class="league-block">
+                    <img class="league-logo" src="@l.Image" alt="@l.Name">
+                    <h4>@l.Name</h4>
+                </div>
+            </a>
+        }
+    </div>
+</div>

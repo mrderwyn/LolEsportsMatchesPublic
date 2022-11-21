@@ -1,0 +1,146 @@
+﻿@model LolEsportsMatchesApp.ViewModels.GameDetailedViewModel
+@{
+    ViewData["Title"] = "League games";
+}
+@section AdditionalCss
+{
+    <link rel="stylesheet" href="~/css/game-page-style.css" asp-append-version="true" />
+}
+
+<div class="game-detailed-container">
+    <div class="game-about">
+        <div>
+            <h2>Game</h2> between @Model.BlueTeam.Code and @Model.RedTeam.Code in <a href="@Url.ActionLink("Index", "Leagues", new {id = Model.LeagueSlug})">@Model.LeagueName</a>
+            on <h6>@Model.GameDate</h6>
+        </div>
+    </div>
+    <div class="game-details">
+        <table>
+            <tr>
+                <td>
+                    <div class="team-header blue-header">
+                        <a href="@Url.ActionLink("DisplayTeam", "Teams", new {id=@Model.BlueTeam.Slug})">
+                            <div class="team-info">
+                                <img class="box" src="@Model.BlueTeam.Image">
+                                <div class="team-code">
+                                    <p>@Model.BlueTeam.Code</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="centered-text">  @Model.KillsBlue  </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="team-header red-header">
+                        <a href="@Url.ActionLink("DisplayTeam", "Teams", new {id=@Model.RedTeam.Slug})">
+                            <div class="team-info">
+                                <img class="box" src="@Model.RedTeam.Image">
+                                <div class="team-code">
+                                    <p>@Model.RedTeam.Code</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="centered-text">  @Model.KillsRed  </div>
+                    </div>
+                </td>
+            </tr>
+            @for (var i = 0; i < 5; i++)
+            {
+                var bs = Model.ChampsBlueStat[i];
+                var rs = Model.ChampsRedStat[i];
+
+                <tr>
+                    <td>
+                        <div class="blue-team">
+                            <div class="champ-info-container">
+                                <div class="first-line">
+                                    <div class="boxes">
+                                        <div class="champ-box">
+                                            <img src="@Model.ChampionsBlueImage[i]" alt="@Model.ChampionsBlue[i]">
+                                            <div class="champ-level">@bs.Level</div>
+                                        </div>
+                                        <div class="items-boxes-container">
+                                           @for (var j = 0; j < bs.ItemsImage.Length; j++)
+                                            {
+                                                if (bs.ItemsImage[j] != "empty")
+                                                {
+                                                    <img class="item-box" src="@bs.ItemsImage[j]" title="@bs.ItemsName[j]" alt="@bs.ItemsName[j]">
+                                                }
+                                                else
+                                                {
+                                                    <div class="item-box"></div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                        <div class="score">
+                                            <div>
+                                                @bs.Kills / @bs.Deaths / @bs.Assists
+                                            </div>
+                                            <div>
+                                                @Html.DisplayFor(m => bs.Gold) gold
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="second-line">
+                                    <div class="runes-boxes">
+                                        <img class="main-rune-box" src="@bs.MainPerk.Image" alt="@bs.MainPerk.Name" title="@bs.MainPerk.Name">
+                                        <img class="sub-rune-box" src="@bs.SubPerk.Image" alt="@bs.SubPerk.Name" title="@bs.SubPerk.Name">
+                                    </div>
+                                    <div class="centered-text">
+                                        @bs.Abilities
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="red-team">
+                            <div class="champ-info-container">
+                                <div class="first-line">
+                                    <div class="boxes">
+                                        <div class="champ-box">
+                                            <img src="@Model.ChampionsRedImage[i]" alt="@Model.ChampionsRed[i]">
+                                            <div class="champ-level">@rs.Level</div>
+                                        </div>
+                                        <div class="items-boxes-container">
+                                            @for (var j = 0; j < rs.ItemsImage.Length; j++)
+                                            {
+                                                if (rs.ItemsImage[j] != "empty")
+                                                {
+                                                    <img class="item-box" src="@rs.ItemsImage[j]" title="@rs.ItemsName[j]" alt="@rs.ItemsName[j]">
+                                                }
+                                                else
+                                                {
+                                                    <div class="item-box"></div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                        <div class="score">
+                                            <div>
+                                                @rs.Kills / @rs.Deaths / @rs.Assists
+                                            </div>
+                                            <div>
+                                                @Html.DisplayFor(m => rs.Gold) gold
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="second-line">
+                                    <div class="runes-boxes">
+                                        <img class="main-rune-box" src="@rs.MainPerk.Image" alt="@rs.MainPerk.Name" title="@rs.MainPerk.Name">
+                                        <img class="sub-rune-box" src="@rs.SubPerk.Image" alt="@rs.SubPerk.Name" title="@rs.SubPerk.Name">
+                                    </div>
+                                    <div class="centered-text">
+                                        @rs.Abilities
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

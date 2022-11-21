@@ -1,0 +1,98 @@
+﻿@model LolEsportsMatchesApp.ViewModels.TeamDetailedViewModel
+@{
+    ViewData["Title"] = "Team detailed info";
+}
+
+<div class="team-and-games-container">
+    <div class="team-detailed-container">
+        <div class="team-info-container">
+            <img class="team-logo-box" src="@Model.Image">
+            <div class="team-info-box">
+                <div class="team-info">
+                    <h2>@Model.Name</h2>
+                    <p>@Model.Region, @Model.HomeLeagueName</p>
+                </div>
+            </div>
+        </div>
+        <div class="team-players-container">
+            @foreach (var player in Model.Players)
+            {
+                <div class="player-container">
+                    <img class="img-box" src="@player.Image">
+                    <div class="player-info">
+                        <h5>@player.SummonerName</h5>
+                        <p>@player.FirstName @player.LastName</p>
+                        @if (player.Role != "none")
+                       {
+                           <p>@player.Role</p>
+                       }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <div class="team-games-container">
+        <table>
+            @foreach (LolEsportsMatchesApp.Models.ShortGameResultModel r in Model.PagedGames.Elements)
+            {
+                <tr>
+                    <td>
+                        <div class="game-short-result-container">
+                            <div class="blue-champs">
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <img class="box" src="@r.SelectedTeamChampionsImage[i]" alt="@r.SelectedTeamChampions[i]">
+                                }
+                            </div>
+                            <div class="score-box">
+                                <p>vs</p>
+                            </div>
+                            <a href="@Url.ActionLink("DisplayTeam", "Teams", new {id=@r.Opponent.Slug})">
+                                <div class="team-info">
+                                    <img class="box" src="@r.Opponent.Image">
+                                    <div class="team-code">
+                                        <p>@r.Opponent.Code</p>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </td>
+                    <td>
+                        <a href="@Url.ActionLink("Index", "Game", new {id=@r.Id})">
+                            <div class="date">
+                                <p>@Html.DisplayFor(m => r.GameDate)</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+        @{
+        var prevDisabled = !Model.PagedGames.HasPrevPage ? "disabled" : string.Empty;
+        var nextDisabled = !Model.PagedGames.HasNextPage ? "disabled" : string.Empty;
+        }
+
+         <a asp-action="DisplayTeam"
+            asp-route-id="@Model.PagedGames.CurrentId"
+            asp-route-page="1"
+            class="btn btn-default">First</a>
+
+         <a asp-action="DisplayTeam"
+            asp-route-id="@Model.PagedGames.CurrentId"
+            asp-route-page="@(Model.PagedGames.CurrentPage - 1)"
+            class="btn btn-default @prevDisabled">Prev</a>
+
+         <a asp-action="DisplayTeam"
+            asp-route-id="@Model.PagedGames.CurrentId"
+            asp-route-page="@(Model.PagedGames.CurrentPage + 1)"
+            class="btn btn-default @nextDisabled">Next</a>
+
+         <a asp-action="DisplayTeam"
+            asp-route-id="@Model.PagedGames.CurrentId"
+            asp-route-page="@Model.PagedGames.LastPage"
+            class="btn btn-default">Last</a>
+    </div>
+</div>

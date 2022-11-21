@@ -1,0 +1,136 @@
+﻿@model LolEsportsMatchesApp.Models.PagedModel<LolEsportsMatchesApp.ViewModels.GameResultViewModel>
+@{
+    ViewData["Title"] = "Games list";
+    var extendedLeagues = new List<SelectListItem>
+    {
+        new SelectListItem{ Text = "League", Value = "", Disabled= true},
+        new SelectListItem{ Text = "All Leagues", Value = ""},
+        new SelectListItem{ Text = "────────", Value = "separator", Disabled= true},
+    }.Concat((ViewData["leaguesDrop"] as IEnumerable<SelectListItem>)!).ToList();
+
+    var extendedTeams = new List<SelectListItem>
+    {
+        new SelectListItem{ Text = "Team", Value = "", Disabled= true},
+        new SelectListItem{ Text = "All Teams", Value = ""},
+        new SelectListItem{ Text = "────────", Value = "separator", Disabled= true},
+    }.Concat((ViewData["teamsDrop"] as IEnumerable<SelectListItem>)!).ToList();
+
+    var extendedChamps = new List<SelectListItem>
+    {
+        new SelectListItem{ Text = "Champion", Value = "", Disabled= true},
+        new SelectListItem{ Text = "All Champions", Value = ""},
+        new SelectListItem{ Text = "────────", Value = "separator", Disabled= true},
+    }.Concat((ViewData["champsDrop"] as IEnumerable<SelectListItem>)!).ToList();
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+<h1>Manage Games</h1>
+
+<a href="@Url.ActionLink("New")" class="btn btn-default">Create</a>
+
+<form method="get">
+    <div class="filter-container">
+            <div class="droplist">
+                @Html.DropDownList("leagueId", extendedLeagues, ViewData["selectedLeague"])
+            </div>
+            
+            <div class="droplist">
+                @Html.DropDownList("teamId", extendedTeams, ViewData["selectedTeam"])
+            </div>
+
+            <div class="droplist">
+                @Html.DropDownList("champId", extendedChamps, ViewData["selectedChamp"])
+            </div>
+        
+        <div class="filter-buttons">
+            <input type="submit" value="Apply" class="btn btn-default"/>
+            
+            <a asp-action="Index" class="btn btn-default">Clear</a>
+        </div>
+    </div>
+</form>
+
+<form method="get">
+    @Html.TextBox("gameId", ViewData["selectedGame"], new {placeholder = "input game id"})
+    <input type="submit" value="Search game" class="btn btn-default" />
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>GameId</th>
+            <th>LeagueId</th>
+            <th>GameDate</th>
+            <th>BlueTeamId</th>
+            <th>Blue Champs (tjmas)</th>
+            <th>BlueKills</th>
+            <th>RedTeamId</th>
+            <th>Red Champs (tjmas)</th>
+            <th>RedKills</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var game in Model.Elements)
+        {
+            <tr>
+                <td>@Html.DisplayFor(item => game.Id)</td>
+                <td>@Html.DisplayFor(item => game.LeagueId) (@Html.DisplayFor(item => game.LeagueName))</td>
+                <td>@Html.DisplayFor(item => game.GameDate)</td>
+                <td>@Html.DisplayFor(item => game.TeamBlueId) (@game.BlueTeam.Code (@game.BlueTeam.Name))</td>
+                <td>@Html.DisplayFor(item => game.ChampionsBlue, "InlineChampsTemplate")</td>
+                <td>@Html.DisplayFor(item => game.KillsBlue)</td>
+                <td>@Html.DisplayFor(item => game.TeamRedId) (@game.RedTeam.Code (@game.RedTeam.Name))</td>
+                <td>@Html.DisplayFor(item => game.ChampionsRed, "InlineChampsTemplate")</td>
+                <td>@Html.DisplayFor(item => game.KillsRed)</td>
+                <td style="display: flex">
+                    <div class="admin-edit-button-container">
+                        <a href="@Url.ActionLink("Update", "AdminGames", new {id = game.Id})"
+                           class="btn btn-default">Edit</a>
+                    </div>
+                    <div class="admin-delete-button-container">
+                        @using (Html.BeginForm("Delete", "AdminGames",  new {id = game.Id}, FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-danger"
+                                   onclick="return confirm('Are you sure you wand to delete @game.Id game?')" value="Delete"/>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+        var prevDisabled = !Model.HasPrevPage ? "disabled" : string.Empty;
+        var nextDisabled = !Model.HasNextPage ? "disabled" : string.Empty;
+    }
+
+     <a asp-action="Index"
+        asp-route-leagueId="@ViewData["selectedLeague"]"
+        asp-route-teamId="@ViewData["selectedTeam"]"
+        asp-route-champId="@ViewData["selectedChamp"]"
+        asp-route-page="1"
+        class="btn btn-default">First</a>
+
+     <a asp-action="Index"
+        asp-route-leagueId="@ViewData["selectedLeague"]"
+        asp-route-teamId="@ViewData["selectedTeam"]"
+        asp-route-champId="@ViewData["selectedChamp"]"
+        asp-route-page="@(Model.CurrentPage - 1)"
+        class="btn btn-default @prevDisabled">Prev</a>
+
+     <a asp-action="Index"
+        asp-route-leagueId="@ViewData["selectedLeague"]"
+        asp-route-teamId="@ViewData["selectedTeam"]"
+        asp-route-champId="@ViewData["selectedChamp"]"
+        asp-route-page="@(Model.CurrentPage + 1)"
+        class="btn btn-default @nextDisabled">Next</a>
+
+     <a asp-action="Index"
+        asp-route-leagueId="@ViewData["selectedLeague"]"
+        asp-route-teamId="@ViewData["selectedTeam"]"
+        asp-route-champId="@ViewData["selectedChamp"]"
+        asp-route-page="@Model.LastPage"
+        class="btn btn-default">Last</a>

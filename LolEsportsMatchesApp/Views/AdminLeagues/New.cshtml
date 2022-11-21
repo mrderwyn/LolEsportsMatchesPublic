@@ -1,0 +1,52 @@
+﻿@model LolEsportsMatchesApp.Models.LeagueModel;
+@{
+    ViewData["Title"] = "New League";
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+<h2>Create League</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+@using (Html.BeginForm("New", "AdminLeagues", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <p>Input League Id</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Id)
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input League Slug</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Slug)
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input League Name</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Name)
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input League Image</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Image)
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Create" class="btn btn-default"/>
+}

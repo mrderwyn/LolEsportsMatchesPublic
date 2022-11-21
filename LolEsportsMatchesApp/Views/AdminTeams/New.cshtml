@@ -1,0 +1,71 @@
+﻿@model LolEsportsMatchesApp.Models.TeamModel;
+@{
+    ViewData["Title"] = "New Team";
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+<h2>Create Team</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+@using (Html.BeginForm("New", "AdminTeams", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <p>Input Team Id</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Id)
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input Team Slug</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Slug)
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input Team Name</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Name)
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input Team Code</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Code)
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Team Region</p>
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.Region, ViewData["regionsDrop"] as IEnumerable<SelectListItem>)
+                @Html.TextBox("newRegion", "", new { placeholder="New region name" })
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input Team Image</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Image)
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Create" class="btn btn-default"/>
+}

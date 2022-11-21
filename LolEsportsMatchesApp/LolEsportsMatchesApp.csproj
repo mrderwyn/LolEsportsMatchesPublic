@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog" Version="2.11.0" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LolData.Services.DataDragon\LolData.Services.DataDragon.csproj" />
+    <ProjectReference Include="..\LolData.Services\LolData.Services.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.Authorisation.EntityFrameworkCore\LolEsportsMatches.Authorisation.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.Authorisation\LolEsportsMatches.Authorisation.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.DataAccess\LolEsportsMatches.DataAccess.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.DataAccess.EntityFrameworkCore\LolEsportsMatches.DataAccess.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.Services.ErrorStorage\LolEsportsMatches.Services.ErrorStorage.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.Services.LifeTimeUpdated\LolEsportsMatches.Services.LifeTimeUpdated.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.Services.LolesportsApiAccess\LolEsportsMatches.Services.LolesportsApiAccess.csproj" />
+    <ProjectReference Include="..\LolEsportsMatches.Services\LolEsportsMatches.Services.csproj" />
+    <ProjectReference Include="..\PagedEnumerables\PagedEnumerables.csproj" />
+  </ItemGroup>
+
+</Project>

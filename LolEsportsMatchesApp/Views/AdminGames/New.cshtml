@@ -1,0 +1,111 @@
+﻿@model LolEsportsMatchesApp.Models.GameResultModel;
+@{
+    ViewData["Title"] = "New Game";
+}
+
+@Html.Display(null, "AdminPanelMenu")
+
+<h2>Create Game</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+@using (Html.BeginForm("New", "AdminGames", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <p>Input Game Id</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Id)
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select League Id</p>
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.LeagueId, ViewData["leaguesDrop"] as IEnumerable<SelectListItem>)
+                <span asp-validation-for="LeagueId" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Input Game Date</p>
+            </td>
+            <td>
+                @Html.EditorFor(m => m.GameDate)
+                <span asp-validation-for="GameDate" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Blue Team Id</p>
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.TeamBlueId, ViewData["teamsDrop"] as IEnumerable<SelectListItem>)
+                <span asp-validation-for="TeamBlueId" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Blue Top</p>
+                <p>Select Blue Jungle</p>
+                <p>Select Blue Middle</p>
+                <p>Select Blue ADC</p>
+                <p>Select Blue Support</p>
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.ChampionsBlue[0], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsBlue[1], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsBlue[2], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsBlue[3], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsBlue[4], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Blue Team Kills</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.KillsBlue)
+                <span asp-validation-for="KillsBlue" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Red Team Id</p>
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.TeamRedId, ViewData["teamsDrop"] as IEnumerable<SelectListItem>)
+                <span asp-validation-for="TeamRedId" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Red Top</p>
+                <p>Select Red Jungle</p>
+                <p>Select Red Middle</p>
+                <p>Select Red ADC</p>
+                <p>Select Red Support</p>
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.ChampionsRed[0], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsRed[1], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsRed[2], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsRed[3], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(m => m.ChampionsRed[4], ViewData["champsDrop"] as IEnumerable<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Select Red Team Kills</p>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.KillsRed)
+                <span asp-validation-for="KillsRed" class="text-danger"></span>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Create" class="btn btn-default"/>
+}
