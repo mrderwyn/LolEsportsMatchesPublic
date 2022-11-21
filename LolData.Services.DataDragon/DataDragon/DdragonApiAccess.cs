@@ -62,9 +62,14 @@ namespace LolData.Services.DataDragon.DataDragon
             JsonElement data = response
                 .GetProperty("data");
 
+            JsonSerializerOptions options = new()
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
             IEnumerable<Models.ChampionJsonModel?>? champs = data
                 .EnumerateObject()
-                .Select(prop => prop.Value.Deserialize<Models.ChampionJsonModel>());
+                .Select(prop => prop.Value.Deserialize<Models.ChampionJsonModel>(options));
 
             return champs;
         }

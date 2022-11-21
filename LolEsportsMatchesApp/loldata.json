@@ -1,5 +1,5 @@
 {
-  "Version": "12.20.1",
+  "Version": "12.22.1",
   "Champions": [
     {
       "Index": 1,
@@ -808,8 +808,8 @@
     },
     {
       "Index": 162,
-      "Id": null,
-      "Name": null
+      "Id": "KSante",
+      "Name": "K'Sante"
     }
   ],
   "Items": [
@@ -924,6 +924,22 @@
     {
       "Id": 1083,
       "Name": "Cull"
+    },
+    {
+      "Id": 1101,
+      "Name": "Scorchclaw Pup"
+    },
+    {
+      "Id": 1102,
+      "Name": "Gustwalker Hatchling"
+    },
+    {
+      "Id": 1103,
+      "Name": "Mosstomper Seedling"
+    },
+    {
+      "Id": 1104,
+      "Name": "Eye of the Herald"
     },
     {
       "Id": 1500,
@@ -1222,6 +1238,10 @@
       "Name": "Warmog's Armor"
     },
     {
+      "Id": 3084,
+      "Name": "Heartsteel"
+    },
+    {
       "Id": 3085,
       "Name": "Runaan's Hurricane"
     },
@@ -1374,6 +1394,10 @@
       "Name": "Ionian Boots of Lucidity"
     },
     {
+      "Id": 3161,
+      "Name": "Spear Of Shojin"
+    },
+    {
       "Id": 3165,
       "Name": "Morellonomicon"
     },
@@ -1468,6 +1492,10 @@
     {
       "Id": 3802,
       "Name": "Lost Chapter"
+    },
+    {
+      "Id": 3803,
+      "Name": "Catalyst of Aeons"
     },
     {
       "Id": 3814,
@@ -1654,16 +1682,28 @@
       "Name": "Everfrost"
     },
     {
+      "Id": 6657,
+      "Name": "Rod of Ages"
+    },
+    {
       "Id": 6660,
       "Name": "Bami's Cinder"
     },
     {
       "Id": 6662,
-      "Name": "Frostfire Gauntlet"
+      "Name": "Iceborn Gauntlet"
     },
     {
       "Id": 6664,
       "Name": "Turbo Chemtank"
+    },
+    {
+      "Id": 6665,
+      "Name": "Jak'Sho, The Protean"
+    },
+    {
+      "Id": 6667,
+      "Name": "Radiant Virtue"
     },
     {
       "Id": 6670,
@@ -1730,16 +1770,8 @@
       "Name": "Draktharr's Shadowcarver"
     },
     {
-      "Id": 7003,
-      "Name": "Turbocharged Hexperiment"
-    },
-    {
-      "Id": 7004,
-      "Name": "Forgefire Crest"
-    },
-    {
       "Id": 7005,
-      "Name": "Rimeforged Grasp"
+      "Name": "Frozen Fist"
     },
     {
       "Id": 7006,
@@ -1816,6 +1848,22 @@
     {
       "Id": 7024,
       "Name": "Caesura"
+    },
+    {
+      "Id": 7025,
+      "Name": "Leviathan"
+    },
+    {
+      "Id": 7026,
+      "Name": "The Unspoken Parasite"
+    },
+    {
+      "Id": 7027,
+      "Name": "Primordial Dawn"
+    },
+    {
+      "Id": 7028,
+      "Name": "Infinite Convergence"
     },
     {
       "Id": 7050,
